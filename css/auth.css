@@ -1,0 +1,200 @@
+/* Dark background when modal open */
+.custom-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    /* offcanvas se upar */
+}
+
+/* form box */
+.custom-modal form {
+    background: #fff;
+    width: 90%;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.custom-modal input{
+    pointer-events: auto;
+}
+
+/* offcanvas thoda neeche */
+.offcanvas {
+    z-index: 1100;
+}
+
+.head-form-1 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.head-form-2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.divider {
+    height: 2px;
+    background: blue;
+    border: none;
+    margin-top: 5px;
+}
+
+.field {
+    margin-top: 30px;
+}
+
+.input-icon {
+    position: relative;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-icon i {
+    position: absolute;
+    left: 12px;
+    top: 15px;
+    font-size: 16px;
+    color: #6c757d;
+    pointer-events: none;
+}
+
+.input-icon input {
+    width: 100%;
+    height: 42px;
+    padding-left: 38px;
+    padding-right: 38px;   
+    border-radius: 6px;
+    outline: none;
+    border: 0;
+    background-color: #dfe1e2;
+}
+
+.wn {
+    color: #6c757d;
+    margin: 2px 0 0;
+    font-size: 13px;
+}
+
+.password-field {
+    margin-bottom: 26px;
+}
+
+.submit {
+    width: 100%;
+    height: 39px;
+    border-radius: 6px;
+    border: 0;
+    background-color: rgba(0, 0, 255, 0.781);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.2s ease;
+}
+
+.submit:hover {
+    background-color: rgba(0, 0, 255, 0.95);
+    /* thoda dark blue */
+    box-shadow: 0 6px 15px rgba(0, 0, 255, 0.35);
+    transform: translateY(-2px);
+}
+
+
+.direct-btn {
+    margin-right: 20px;
+}
+
+  .google-btn {
+    background: #ffffff;
+    border: 1px solid #dadce0;
+    color: #3c4043;
+    font-weight: 500;
+}
+
+.google-btn:hover {
+    background: #f8f9fa;
+    border-color: #c6c6c6;
+    color: #3c4043;
+}
+
+
+ .error-msg {
+    color: #35dc5f;   /* bootstrap danger red */
+    font-size: 13px;
+    margin-left: 5px;
+    display: block;
+}
+
+input.error {
+    border: 1px solid #dc3545;
+}
+
+input.success {
+    border: 1px solid #198754;
+}
+
+
+.error-msg {
+    display: block;
+    margin: 2px 0 0;     /* input ke bilkul niche */
+    font-size: 13px;
+    color: #dc3545;
+    line-height: 1.2;
+}
+
+/* ================= SWITCH AUTH TEXT ================= */
+
+.switch-auth-text {
+
+    margin-top: 18px;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    color: #555;
+
+}
+
+.switch-auth-text a {
+
+    color: #1f66d1;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    margin-left: 5px;
+
+}
+
+.switch-auth-text a:hover {
+
+    text-decoration: underline;
+
+}
+
+/* ================= PASSWORD TOGGLE EYE ICON ================= */
+
+.input-icon .toggle-password-icon {
+    left: auto;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: auto;
+    cursor: pointer;
+    color: #6c757d;
+}
+
+.input-icon .toggle-password-icon:hover {
+    color: #343a40;
+}

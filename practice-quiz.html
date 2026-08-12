@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Practice Quizzes - GT24</title>
+
+    <!-- Guests can freely browse Course/Paper/Chapter/Quiz cards here.
+         This flag stops auth.js from force-popping the login modal on load. -->
+    <script>window.SKIP_AUTO_LOGIN_POPUP = true;</script>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/practice-quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR (same as home page) ================= -->
+    <div class="bg-primary text-white shadow-lg navbar navbar-dark sticky-top">
+        <div class="container-fluid d-flex align-items-center">
+
+            <div class="col-6 col-lg-3">
+                <a class="navbar-brand logo-box" href="index.html">
+                    <img src="images/logo.png" alt="GT24 Logo" class="site-logo">
+                </a>
+            </div>
+
+            <div class="col-6 col-lg-9 d-flex align-items-center justify-content-end">
+
+                <ul class="nav d-none d-lg-flex me-4">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="notes.html">Notes</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-white dropdown-toggle" href="#">Online Test</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="live-quiz.html">Live Quizzes</a></li>
+                            <li><a class="dropdown-item" href="practice-quiz.html">Practice Quizzes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+
+                <div class="d-none d-lg-flex align-items-center gap-2 me-3" id="authArea">
+
+                    <div id="guestButtons">
+                        <button class="btn btn-outline-light" onclick="openLogin()">Login</button>
+                        <button class="btn btn-success" onclick="openSignup()">Create Account</button>
+                    </div>
+
+                    <div id="userMenu" class="dropdown d-none">
+                        <a class="text-white fs-5 dropdown-toggle" href="#" role="button">
+                            <i class="fa-solid fa-user-circle"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="logoutUser()">Logout</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#mobileMenu">
+                    <i class="fa-solid fa-bars text-white fs-3"></i>
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <!-- ================= NAVBAR END ================= -->
+
+    <!-- LOGIN MODAL -->
+    <div id="loginModal" class="custom-modal">
+        <form method="post" id="loginForm">
+            <div class="head-form-1">
+                <h4>Login</h4>
+                <button type="button" class="btn-close" onclick="closeLoginModal()"></button>
+            </div>
+            <hr class="divider">
+            <div class="field">
+                <div class="input-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="loginEmail" placeholder="Email Address" name="email">
+                    <small class="error-msg" id="LoginEmailError"></small>
+                </div>
+                <div class="input-icon">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="loginPassword" placeholder="Password" name="password">
+                    <i class="fa-solid fa-eye toggle-password-icon" data-target="loginPassword"></i>
+                    <small class="error-msg" id="passwordError"></small>
+                </div>
+                <div class="text-end mb-2">
+                    <a href="#" onclick="openForgotPassword()" class="text-decoration-none">Forgot Password?</a>
+                </div>
+                <button type="submit" class="submit">Login</button>
+                <div class="switch-auth-text">
+                    <span>Don't have an account?</span>
+                    <a href="#" onclick="switchToSignup()">Register First</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- SIGNUP MODAL -->
+    <div id="signupModal" class="custom-modal">
+        <form method="post" id="signupForm">
+            <div class="head-form-2">
+                <h4>Create Account</h4>
+                <button type="button" class="btn-close" onclick="closeModal('signupModal')"></button>
+            </div>
+            <hr class="divider">
+            <div class="field">
+                <div class="input-icon">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" inputmode="text" id="name" placeholder="Name" name="name">
+                    <small class="error-msg" id="nameError"></small>
+                </div>
+                <div class="input-icon">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="tel" id="mobile" placeholder="Mobile" name="mobile">
+                    <small class="error-msg" id="mobileError"></small>
+                </div>
+                <div class="input-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" inputmode="email" id="signupEmail" placeholder="Email" name="email">
+                    <small class="error-msg" id="SignUpEmailError"></small>
+                </div>
+                <div class="input-icon">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="signupPassword1" placeholder="Password" name="password">
+                    <i class="fa-solid fa-eye toggle-password-icon" data-target="signupPassword1"></i>
+                    <small class="error-msg" id="passwordError1"></small>
+                </div>
+                <div class="input-icon">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="signupPassword2" placeholder="Confirm Password" name="password">
+                    <i class="fa-solid fa-eye toggle-password-icon" data-target="signupPassword2"></i>
+                    <small class="error-msg" id="passwordError2"></small>
+                </div>
+                <button type="submit" class="submit">Register</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- OTP MODAL -->
+    <div id="otpModal" class="custom-modal">
+        <form id="otpForm">
+            <div class="head-form-2">
+                <h4>Email Verification</h4>
+                <button type="button" class="btn-close" onclick="closeAll()"></button>
+            </div>
+            <hr class="divider">
+            <div class="field">
+                <div class="input-icon">
+                    <i class="fa-solid fa-key"></i>
+                    <input type="text" id="otp" placeholder="Enter OTP" maxlength="6">
+                    <small class="error-msg" id="otpError"></small>
+                </div>
+                <button type="submit" class="submit">Verify OTP</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- OFFCANVAS MOBILE MENU -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="notes.html">Notes</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Online Test</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="live-quiz.html">Live Quizzes</a></li>
+                        <li><a class="dropdown-item" href="practice-quiz.html">Practice Quizzes</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+            </ul>
+            <hr>
+            <div id="mobileGuest">
+                <button class="btn btn-outline-primary w-100 mb-2" onclick="openLogin()">Login</button>
+                <button class="btn btn-success w-100" onclick="openSignup()">Create Account</button>
+            </div>
+            <div id="mobileUserMenu" class="d-none">
+                <a href="profile.html" class="btn btn-outline-dark w-100 mb-2">
+                    <i class="fa-solid fa-user"></i> My Profile
+                </a>
+                <button class="btn btn-danger w-100" onclick="logoutUser()">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- OFFCANVAS END -->
+
+    <!-- Header Section -->
+    <div class="practice-header">
+        <h1>Practice Quizzes</h1>
+        <h6>Select your course, paper and chapter — then start the quiz</h6>
+    </div>
+
+    <!-- Breadcrumb + dynamic stage heading -->
+    <div class="quiz-wrapper">
+        <div class="browse-topbar">
+            <div id="browseBreadcrumb" class="browse-breadcrumb"></div>
+            <h2 id="stageHeading" class="stage-heading"></h2>
+        </div>
+
+        <div id="quizContainer" class="quiz-container">
+            <!-- Cards JS se aayenge (course / paper / chapter / quiz) -->
+        </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script src="js/config.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/quiz-browser.js"></script>
+    <script src="js/practice-quiz.js"></script>
+</body>
+
+</html>

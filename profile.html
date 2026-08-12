@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Profile - GetInTouch24</title>
+
+  <!-- Bootstrap CSS-->
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/base.css">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+  <link rel="stylesheet" href="css/profile.css">
+
+  <!-- Bootstrap JS -->
+  <script src="js/config.js"></script>
+  <script src="js/loader.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/bootstrap.bundle.js"></script>
+
+  <!-- JS Files -->
+  <script src="js/auth.js" defer></script>
+  <script src="js/profile.js" defer></script>
+</head>
+
+<body>
+
+  <!-- TOP NAVBAR -->
+
+  <div class="custom-navbar">
+
+    <!-- LOGO -->
+    <div class="logos-box">
+
+      <img src="images/logo.png" alt="GT24 Logo" class="sites-logo">
+
+    </div>
+
+    <!-- HOME BUTTON -->
+    <a href="index.html" class="home-btn">
+
+      <i class="fa-solid fa-house"></i>
+
+      Home
+
+    </a>
+
+  </div>
+
+
+  <div class="container py-5">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-6">
+
+        <div class="card shadow-lg rounded-4">
+          <div class="card-body text-center p-4">
+
+            <!-- Profile Icon -->
+            <div class="mb-3">
+              <i class="fa-solid fa-user-circle text-primary" style="font-size:90px;"></i>
+            </div>
+
+            <!-- Profile Info -->
+            <h4 id="profileName">Loading...</h4>
+            <p class="text-muted mb-1" id="profileEmail"></p>
+            <p class="text-muted" id="profileMobile"></p>
+
+            <hr>
+
+            <div class="d-grid gap-2">
+              <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editProfileModal">
+                Edit Profile
+              </button>
+
+              <button class="btn btn-danger" onclick="logoutUser()">
+                Logout
+              </button>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ================= QUIZ HISTORY ================= -->
+  <div class="container mt-5">
+
+    <div class="card shadow-sm rounded-4">
+      <div class="card-body">
+
+        <h5 class="mb-3">
+          <i class="fa-solid fa-clock-rotate-left text-primary"></i>
+          Quiz Attempt History
+        </h5>
+
+        <div class="table-responsive">
+          <div class="row mb-3">
+
+            <!-- Search -->
+            <div class="col-md-6 mb-2">
+              <input type="text" id="searchInput" class="form-control" placeholder="Search quiz name...">
+            </div>
+
+            <!-- Filter by Course -->
+
+
+          </div>
+          <table class="table table-bordered align-middle text-center">
+
+            <thead class="table-light">
+              <tr>
+                <th>#</th>
+                <th>Quiz Name</th>
+                <th>Quiz Type</th>
+                <th>Score</th>
+                <th>Total Marks</th>
+                <th>Correct</th>
+                <th>Wrong</th>
+                <th>Percentage</th>
+                <th>Status</th>
+                <th>Attempted</th>
+                <th>Result</th>
+              </tr>
+            </thead>
+
+            <tbody id="quizHistoryBody">
+              <!-- Data JS se aayega -->
+            </tbody>
+
+          </table>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <!-- ================= PURCHASED NOTES ================= -->
+<div class="container mt-5">
+
+  <div class="card shadow-sm rounded-4">
+    <div class="card-body">
+
+      <h5 class="mb-3">
+        <i class="fa-solid fa-book text-success"></i>
+        Purchased Notes
+      </h5>
+
+      <div id="purchasedNotesContainer">
+
+        <div class="text-center text-muted">
+          Loading notes...
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+  <!-- ================= EDIT PROFILE MODAL ================= -->
+  <div class="modal fade" id="editProfileModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Edit Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+
+          <form id="editProfileForm">
+
+            <div class="mb-3">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" id="editName" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" id="editEmail" readonly>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Mobile</label>
+              <input type="text" class="form-control" id="editMobile" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100">
+              Save Changes
+            </button>
+
+          </form>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div id="footer"></div>
+
+</body>
+
+</html>

@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GetInTouch24 - An Educational Website</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/auth.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <!-- Bootstrap JS -->
+    <script src="js/config.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+
+    <!-- Auth JS -->
+    <script src="js/auth.js" defer></script>
+    <script type="module" src="js/dynamic_content.js"></script>
+</head>
+
+<body>
+
+    <!-- Container start -->
+    <div class="container-fluid p-0">
+
+        <!-- NAVBAR -->
+        <div class="bg-primary text-white shadow-lg navbar navbar-dark sticky-top">
+            <div class="container-fluid d-flex align-items-center">
+
+                <!-- LOGO -->
+                <div class="col-6 col-lg-3">
+                    <a class="navbar-brand logo-box" href="index.html">
+
+                        <img src="images/logo.png" alt="GT24 Logo" class="site-logo">
+
+                    </a>
+                </div>
+
+                <!-- NAV + BUTTONS -->
+                <div class="col-6 col-lg-9 d-flex align-items-center justify-content-end">
+
+                    <!-- DESKTOP NAV -->
+                    <ul class="nav d-none d-lg-flex me-4">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="index.html">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <!--dropdown-->
+                            <a class="nav-link text-white" href="notes.html">
+                                <!--dropdown-toggle-->
+                                <!--data-bs-toggle="dropdown"-->
+                                Notes
+                            </a>
+                            <!--
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another Action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                        -->
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link text-white dropdown-toggle" href="#">
+                                Online Test
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="live-quiz.html">Live Quizzes</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="practice-quiz.html">Practice Quizzes</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="contact.html">
+                                Contact Us
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <!-- DESKTOP BUTTONS -->
+                    <!-- DESKTOP AUTH AREA -->
+                    <div class="d-none d-lg-flex align-items-center gap-2 me-3" id="authArea">
+
+                        <!-- BEFORE LOGIN -->
+                        <div id="guestButtons">
+                            <button class="btn btn-outline-light" onclick="openLogin()">Login</button>
+                            <button class="btn btn-success" onclick="openSignup()">Create Account</button>
+                        </div>
+
+                        <!-- AFTER LOGIN -->
+                        <div id="userMenu" class="dropdown d-none">
+                            <a class="text-white fs-5 dropdown-toggle" href="#" role="button">
+                                <i class="fa-solid fa-user-circle"></i>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                                <!-- <li>
+                                    <hr class="dropdown-divider">
+                                </li> -->
+                                <li><a class="dropdown-item text-danger" href="#" onclick="logoutUser()">Logout</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- MOBILE BURGER -->
+                    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#mobileMenu">
+
+                        <i class="fa-solid fa-bars text-white fs-3"></i>
+
+                    </button>
+
+                </div>
+            </div>
+        </div>
+        <!-- NAVBAR END -->
+
+
+        <!-- Marquee start -->
+        <div class="update-bar mt-3">
+            <div class="lu">Latest Update</div>
+            <div class="mar">
+                <div class="marquee-wrapper">
+
+                    <div id="marqueeText" class="marquee-content">
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- Marquee End -->
+
+
+        <!-- LOGIN MODAL -->
+        <div id="loginModal" class="custom-modal">
+            <form method="post" id="loginForm">
+
+                <div class="head-form-1">
+                    <h4>Login</h4>
+                    <button type="button" class="btn-close" onclick="closeLoginModal()"></button>
+                </div>
+
+                <hr class="divider">
+
+                <div class="field">
+
+                    <div class="input-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="Email Address" name="email">
+                        <small class="error-msg" id="LoginEmailError"></small>
+                    </div>
+
+                    <div class="input-icon">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="Password" name="password">
+                        <i class="fa-solid fa-eye toggle-password-icon" data-target="loginPassword"></i>
+                        <small class="error-msg" id="passwordError"></small>
+                    </div>
+
+                    <div class="text-end mb-2">
+                        <a href="#" onclick="openForgotPassword()" class="text-decoration-none">
+                            Forgot Password?
+                        </a>
+                    </div>
+
+                    <button type="submit" class="submit">
+                        Login
+                    </button>
+
+                    <div class="switch-auth-text">
+
+                        <span>
+                            Don't have an account?
+                        </span>
+
+                        <a href="#" onclick="switchToSignup()">
+                            Register First
+                        </a>
+
+                    </div>
+
+                </div>
+            </form>
+        </div>
+        <!-- LOGIN MODAL END -->
+
+
+        <!-- RESET PASSWORD -->
+
+        <!-- RESET PASSWORD END -->
+
+
+        <!-- SIGNUP MODAL -->
+        <div id="signupModal" class="custom-modal">
+            <form method="post" id="signupForm">
+
+                <div class="head-form-2">
+                    <h4>Create Account</h4>
+                    <button type="button" class="btn-close" onclick="closeModal('signupModal')">
+                    </button>
+                </div>
+
+                <hr class="divider">
+
+                <div class="field">
+
+                    <div class="input-icon">
+                        <i class="fa-solid fa-user"></i>
+                        <input type="text" inputmode="text" id="name" placeholder="Name" name="name">
+                        <small class="error-msg" id="nameError"></small>
+                    </div>
+
+                    <div class="input-icon">
+                        <i class="fa-solid fa-phone"></i>
+                        <input type="tel" id="mobile" placeholder="Mobile" name="mobile">
+                        <small class="error-msg" id="mobileError"></small>
+                    </div>
+
+                    <div class="input-icon">
+                        <i class="fa-solid fa-envelope"></i>
+                        <input type="email" inputmode="email" id="signupEmail" placeholder="Email" name="email"
+                            title="Enter correct email because OTP will be send to this email for verification purpose">
+
+                        <small class="error-msg" id="SignUpEmailError"></small>
+                    </div>
+
+                    <div class="input-icon">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="signupPassword1" placeholder="Password" name="password"
+                            title="you can create password of any pattern like only numbers or combination of numbers and alphabets and special symbol or only alphabets">
+                        <i class="fa-solid fa-eye toggle-password-icon" data-target="signupPassword1"></i>
+                        <small class="error-msg" id="passwordError1"></small>
+                    </div>
+
+                    <div class="input-icon">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" id="signupPassword2" placeholder="Confirm Password" name="password">
+                        <i class="fa-solid fa-eye toggle-password-icon" data-target="signupPassword2"></i>
+                        <small class="error-msg" id="passwordError2"></small>
+                    </div>
+
+                    <button type="submit" class="submit">
+                        Register
+                    </button>
+
+                </div>
+                <div class="mt-2">
+                    <b><i>Note:</i></b>
+                    <p><i>If you face any issue during register like verification email or other things then please
+                            wait 30 second to 1 min and then try to register and verify email.</i></p>
+                </div>
+
+            </form>
+        </div>
+        <!-- SIGNUP MODAL END -->
+
+        <!-- OTP MODAL START -->
+        <div id="otpModal" class="custom-modal">
+
+            <form id="otpForm">
+
+                <div class="head-form-2">
+
+                    <h4>Email Verification</h4>
+
+                    <button type="button" class="btn-close" onclick="closeAll()">
+                    </button>
+
+                </div>
+
+                <hr class="divider">
+
+                <div class="field">
+
+                    <div class="input-icon">
+
+                        <i class="fa-solid fa-key"></i>
+
+                        <input type="text" id="otp" placeholder="Enter OTP" maxlength="6">
+
+                        <small class="error-msg" id="otpError">
+                        </small>
+
+                    </div>
+
+                    <button type="submit" class="submit">
+
+                        Verify OTP
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+        <!-- OTP MODAL END -->
+
+
+        <!-- Slider start -->
+        <div class="slider">
+            <div id="carouselExampleAutoplaying" class="carousel slide mt-2" data-bs-ride="carousel">
+
+                <div class="carousel-inner" id="sliderContainer">
+                    <!-- Slides JS se aayengi -->
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+
+            </div>
+        </div>
+        <!-- Slider end -->
+
+
+        <hr class="sep" />
+
+        <!-- Facility start -->
+        <section class="why-us">
+
+            <h3 class="why-heading">
+                Why Choose Our Plateform for Learning ?
+            </h3>
+
+            <div class="facility-section">
+                <div class="row facility p-4">
+
+                    <div class="col-12 col-lg-4">
+                        <div class="card custom-card shadow">
+                            <img src="images/ad1.webp" class="card-img-top custom-img" alt="first ad">
+
+                            <div class="card-body">
+                                <h5>Interactive Quizzes for Every Courses</h5>
+                                <p class="card-text">
+                                    Practice smarter with interactive quizzes designed for CCC, O
+                                    Level, A Level and more. Each quiz is based on the latest NIELIT exam pattern,
+                                    helping you improve speed, accuracy, and confidence before the real exam.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-4">
+                        <div class="card custom-card shadow">
+                            <img src="images/ad2.png" class="card-img-top custom-img" alt="second ad">
+
+                            <div class="card-body">
+                                <h5>Completely Study Notes for All Courses</h5>
+                                <p class="card-text">
+                                    Get well-structured, easy-to-understand study notes for every
+                                    course. All notes are prepared as per the updated NIELIT syllabus,
+                                    making learning simple, effective, and exam-focused.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-lg-4">
+                        <div class="card custom-card shadow">
+                            <img src="images/ad3.jpg" class="card-img-top custom-img" alt="third ad">
+
+                            <div class="card-body">
+                                <h5> Instant Exam & Course Updates</h5>
+                                <p class="card-text">
+                                    Stay updated with real-time notifications about exams, results,
+                                    syllabus changes, and important announcements. Never miss any update related to your
+                                    course or upcoming exams.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+        <!-- Facility end -->
+
+        <!-- QUICK QUIZZES SECTION START -->
+        <section class="quick-quizzes py-5">
+
+            <div class="container">
+
+                <h3 class="text-center fw-bold mb-4">
+                    <!-- Quick Quizzes -->
+                </h3>
+
+                <div class="row g-4" id="quickQuizContainer">
+
+                    <!-- Dynamic Quiz Cards -->
+
+                </div>
+
+            </div>
+
+        </section>
+        <!-- QUICK QUIZZES SECTION END -->
+
+    </div>
+    <!-- CONTAINER END -->
+
+
+    <!-- OFFCANVAS MOBILE MENU -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+
+        <div class="offcanvas-body">
+
+            <ul class="nav flex-column">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="notes.html">Notes</a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        Online Test
+                    </a>
+
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="live-quiz.html">
+                                Live Quizzes
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="practice-quiz.html">
+                                Practice Quizzes
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">
+                        Contact Us
+                    </a>
+                </li>
+
+            </ul>
+
+            <hr>
+
+            <hr>
+
+            <!-- BEFORE LOGIN -->
+            <div id="mobileGuest">
+                <button class="btn btn-outline-primary w-100 mb-2" onclick="openLogin()">Login</button>
+                <button class="btn btn-success w-100" onclick="openSignup()">Create Account</button>
+            </div>
+
+            <!-- AFTER LOGIN -->
+            <div id="mobileUserMenu" class="d-none">
+                <a href="profile.html" class="btn btn-outline-dark w-100 mb-2">
+                    <i class="fa-solid fa-user"></i> My Profile
+                </a>
+
+                <button class="btn btn-danger w-100" onclick="logoutUser()">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <!-- OFFCANVAS END -->
+    <div id="footer"></div>
+
+
+
+</body>
+
+</html>

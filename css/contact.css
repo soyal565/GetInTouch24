@@ -1,0 +1,370 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+
+    font-family: 'Poppins', sans-serif;
+
+    background: #f4f7fc;
+
+    color: #222;
+}
+
+/* NAVBAR */
+
+.contact-navbar {
+
+    background:
+        linear-gradient(
+            90deg,
+            #1f66d1,
+            #1a4fb5
+        );
+
+    padding: 18px 0;
+
+    box-shadow:
+        0 4px 15px rgba(0,0,0,0.1);
+}
+
+.contact-navbar .container {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+}
+
+.brand-logo {
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 28px;
+
+    font-weight: 700;
+}
+
+.home-btn {
+
+    background: white;
+
+    color: #1f66d1;
+
+    padding: 10px 18px;
+
+    border-radius: 8px;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.home-btn:hover {
+
+    background: #eaf1ff;
+
+    transform: translateY(-2px);
+}
+
+/* HERO */
+
+.contact-hero {
+
+    background:
+        linear-gradient(
+            90deg,
+            #1f66d1,
+            #1a4fb5
+        );
+
+    color: white;
+
+    text-align: center;
+
+    padding: 70px 20px 120px;
+}
+
+.contact-hero h1 {
+
+    font-size: 48px;
+
+    font-weight: 700;
+
+    margin-bottom: 15px;
+}
+
+.contact-hero p {
+
+    font-size: 18px;
+
+    opacity: 0.9;
+}
+
+/* SECTION */
+
+.contact-section {
+
+    margin-top: -70px;
+
+    padding-bottom: 60px;
+}
+
+.contact-wrapper {
+
+    background: white;
+
+    border-radius: 18px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.12);
+
+    display: grid;
+
+    grid-template-columns:
+        1fr 1.2fr;
+}
+
+/* LEFT */
+
+.contact-info {
+
+    background:
+        rgb(47, 179, 255);
+
+    color: white;
+
+    padding: 50px;
+}
+
+.contact-info h2 {
+
+    font-size: 32px;
+
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+
+    line-height: 1.8;
+
+    margin-bottom: 35px;
+}
+
+.info-box {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 22px;
+
+    font-size: 16px;
+}
+
+.info-box i {
+
+    font-size: 20px;
+}
+
+/* RIGHT */
+
+.contact-form-box {
+
+    padding: 50px;
+}
+
+.contact-form-box h3 {
+
+    margin-bottom: 30px;
+
+    font-size: 28px;
+
+    color: rgb(47, 179, 255);
+
+    font-weight: 700;
+}
+
+.form-control {
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    border: 1px solid #ccc;
+}
+
+.form-control:focus {
+
+    border-color: #1f66d1;
+
+    box-shadow:
+        0 0 0 0.2rem rgba(31,102,209,0.2);
+}
+
+.send-btn {
+
+    width: 100%;
+
+    border: none;
+
+    background:
+        rgb(47, 179, 255);
+
+    color: white;
+
+    padding: 14px;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.send-btn:hover {
+
+    transform: translateY(-2px);
+
+    opacity: 0.95;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+    .contact-wrapper {
+
+        grid-template-columns: 1fr;
+    }
+
+    .contact-info,
+    .contact-form-box {
+
+        padding: 35px;
+    }
+
+    .contact-hero h1 {
+
+        font-size: 36px;
+    }
+}
+
+.logos-box {
+
+    background: white;
+
+    border-radius: 999px;
+
+    padding: 8px 15px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-left: -10px;
+
+}
+
+.sites-logo {
+
+    height: 80px;
+
+    width: auto;
+
+    display: block;
+
+}
+
+/* ================= PREVIEW MODAL ================= */
+
+.preview-modal-content {
+    border-radius: 16px;
+    border: none;
+    overflow: hidden;
+}
+
+.preview-modal-content .modal-header {
+    background: linear-gradient(90deg, #1f66d1, #1a4fb5);
+    color: white;
+    border-bottom: none;
+}
+
+.preview-modal-content .modal-header .btn-close {
+    filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+.preview-label {
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
+    margin-bottom: 4px;
+}
+
+.preview-value {
+    font-size: 16px;
+    color: #222;
+    background: #f4f7fc;
+    padding: 12px 14px;
+    border-radius: 8px;
+}
+
+.preview-message-text {
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.6;
+}
+
+#confirmSendBtn {
+    background: rgb(47, 179, 255);
+    border: none;
+}
+
+#confirmSendBtn:hover {
+    opacity: 0.9;
+}
+
+#confirmSendBtn:disabled {
+    opacity: 0.7;
+}
+
+/* ================= THANK YOU MODAL ================= */
+
+.thank-you-modal-content {
+    border-radius: 18px;
+    border: none;
+}
+
+.thank-you-icon {
+    font-size: 64px;
+    color: #22c55e;
+}
+
+.thank-you-modal-content h4 {
+    font-weight: 700;
+    color: #1f66d1;
+}
+
+.thank-you-modal-content .btn-primary {
+    background: rgb(47, 179, 255);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+}

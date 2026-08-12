@@ -1,0 +1,901 @@
+/* ========================= */
+/* GLOBAL OVERFLOW FIX */
+/* ========================= */
+body {
+    overflow-x: hidden;
+}
+
+/* ===== NAVBAR HEIGHT FIX ===== */
+
+.navbar {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    min-height: 70px;
+}
+
+.navbar .container-fluid {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+/* Extra safety for bootstrap rows */
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* ================= LOGO ================= */
+
+.logo-box {
+
+    background: white;
+
+    border-radius: 999px;
+
+    padding: 4px 10px;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.site-logo {
+
+    height: 90px;
+
+    width: auto;
+
+    display: block;
+
+
+}
+
+
+
+/* Navbar Styling */
+.nav {
+    padding-left: 0;
+    font-size: larger;
+    font-weight: bold;
+}
+
+/* Desktop dropdown hover */
+@media (min-width: 992px) {
+    .nav-item.dropdown:hover .dropdown-menu {
+        display: block;
+        /* hover pe open */
+    }
+}
+
+/* Buttons styling */
+.auth-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+.auth-btn-wrapper .btn {
+    width: auto;
+    padding: 6px 14px;
+    white-space: nowrap;
+}
+
+#userMenu a {
+    text-decoration: none !important;
+}
+
+.navbar-toggler {
+    border: none;
+    box-shadow: none !important;
+}
+
+.nav-link {
+    outline: none;
+    /* default browser outline remove */
+}
+
+/* Heading css end */
+
+/* marquee css start */
+/* .inf {
+    background-color: #f8f9fa;
+    border-top: 1px solid green;
+} */
+
+/* main flex container */
+.update-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #f8f9fa;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+/* left pill */
+.lu {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    padding: 10px 10px;
+    border-radius: 0 25px 25px 0;
+    white-space: nowrap;
+}
+
+/* marquee area */
+.mar {
+    flex: 1;
+    /* padding-left: 15px; */
+    overflow: hidden;
+}
+
+.mar marquee {
+    padding-top: 5px;
+}
+
+/* marquee css end */
+
+/* Slideshow responsive */
+
+
+.slider-img {
+    width: 100%;
+    height: auto;
+    /* keep original ratio */
+    max-height: 600px;
+    /* desktop max */
+    object-fit: contain;
+    /* preserve image */
+}
+
+/* Mobile adjust */
+@media (max-width: 768px) {
+    .slider-img {
+        max-height: 300px;
+    }
+}
+
+.carousel-item {
+    height: 70vh;
+    min-height: 300px;
+    max-height: 600px;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@media (max-width:768px) {
+    .carousel-item {
+        height: 40vh;
+    }
+}
+
+
+.why-us {
+    position: relative;
+    margin-top: 5vh;
+    z-index: 2;
+    background: white;
+}
+
+.why-heading {
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+.custom-card {
+    width: 100%;
+    /* responsive */
+    height: 400px;
+    /* fix height */
+    border-radius: 12px;
+    margin-bottom: 16px;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.custom-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18) !important;
+}
+
+
+.custom-img {
+    height: 200px;
+    object-fit: cover;
+    /* image crop but clean */
+}
+
+@media(max-width:768px) {
+    .custom-card {
+        height: auto;
+    }
+}
+
+.card-body h5 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.card-text {
+    text-align: justify;
+}
+
+
+#userMenu {
+    position: relative;
+}
+
+#userMenu .dropdown-menu {
+    top: 100%;
+    right: 0;
+    left: auto;
+}
+
+@media (min-width: 992px) {
+    #userMenu.dropdown:hover .dropdown-menu {
+        display: block;
+        /* hover pe open */
+    }
+}
+
+/* ========================= */
+/* QUICK QUIZZES SECTION */
+/* ========================= */
+
+.quick-quizzes {
+    background: #f8f9fa;
+}
+
+.quick-quiz-card {
+    border: none;
+    border-radius: 16px;
+    transition: 0.3s ease;
+    overflow: hidden;
+}
+
+.quick-quiz-card:hover {
+    transform: translateY(-5px);
+}
+
+.quiz-badge {
+    font-size: 12px;
+}
+
+.quiz-info p {
+    margin-bottom: 8px;
+}
+
+
+/* QUICK QUIZ SECTION */
+
+.quick-quizzes {
+    background: #f8f9fa;
+}
+
+.quick-quizzes .quiz-card {
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 25px;
+
+    box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+
+    position: relative;
+
+    overflow: hidden;
+
+    height: 100%;
+}
+
+.quick-quizzes .quiz-card:hover {
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.quick-quizzes .course-badge {
+
+    display: inline-block;
+
+    background: #0d6efd;
+
+    color: white;
+
+    padding: 6px 12px;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    margin-bottom: 15px;
+}
+
+.quick-quizzes .quiz-card h3 {
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+}
+
+.quick-quizzes .quiz-card p {
+
+    margin-bottom: 10px;
+
+    color: #444;
+}
+
+.quick-quizzes .start-btn {
+
+    width: 100%;
+
+    border: none;
+
+    background: #0d6efd;
+
+    color: white;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+    margin-top: 18px;
+
+    transition: 0.3s;
+}
+
+.quick-quizzes .start-btn:hover {
+
+    background: #0b5ed7;
+}
+
+/* ================= FOOTER ================= */
+
+.site-footer {
+
+    background:
+        linear-gradient(135deg,
+            #0d6efd,
+            #001f54);
+
+    color: white;
+
+    margin-top: 70px;
+
+    padding-top: 60px;
+
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+
+    overflow: hidden;
+
+    position: relative;
+
+}
+
+/* GLOW EFFECT */
+
+.site-footer::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: -120px;
+    right: -120px;
+
+    width: 300px;
+    height: 300px;
+
+    background:
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 50%;
+
+}
+
+.site-footer::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: -100px;
+    left: -100px;
+
+    width: 250px;
+    height: 250px;
+
+    background:
+        rgba(255, 255, 255, 0.05);
+
+    border-radius: 50%;
+
+}
+
+/* CONTENT */
+
+.footer-content {
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+/* LOGO */
+
+.footer-logo {
+
+    width: 90px;
+
+    border-radius: 20px;
+
+    margin-bottom: 18px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.3);
+
+}
+
+/* TITLE */
+
+.footer-title {
+
+    font-size: 30px;
+
+    font-weight: bold;
+
+    margin-bottom: 15px;
+
+}
+
+/* TEXT */
+
+.footer-text {
+
+    color: #dbe7ff;
+
+    line-height: 1.8;
+
+    font-size: 15px;
+
+}
+
+/* HEADINGS */
+
+.footer-heading {
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    margin-bottom: 22px;
+
+    position: relative;
+
+    display: inline-block;
+
+}
+
+.footer-heading::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 60%;
+
+    height: 3px;
+
+    border-radius: 20px;
+
+    background: white;
+
+}
+
+/* LINKS */
+
+.footer-links {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0;
+
+}
+
+.footer-links li {
+
+    margin-bottom: 13px;
+
+}
+
+.footer-links a {
+
+    color: #e9f1ff;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+
+    font-size: 15px;
+
+}
+
+.footer-links a:hover {
+
+    color: #ffd166;
+
+    padding-left: 8px;
+
+}
+
+/* CONTACT */
+
+.footer-contact p {
+
+    margin-bottom: 14px;
+
+    color: #e9f1ff;
+
+    font-size: 15px;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+
+    word-break: break-word;
+    overflow-wrap: anywhere;
+
+}
+
+.footer-contact i {
+
+    color: #ffd166;
+
+    margin-right: 0;
+    margin-top: 3px;
+    flex-shrink: 0;
+
+}
+
+/* SOCIAL */
+
+.footer-social {
+
+    margin-top: 25px;
+
+}
+
+.footer-social a {
+
+    width: 42px;
+    height: 42px;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.15);
+
+    color: white;
+
+    text-decoration: none;
+
+    margin-right: 10px;
+
+    font-size: 18px;
+
+    transition: 0.3s;
+
+}
+
+.footer-social a:hover {
+
+    background: white;
+
+    color: #0d6efd;
+
+    transform:
+        translateY(-5px) scale(1.08);
+
+}
+
+/* BOTTOM */
+
+.footer-bottom {
+
+    margin-top: 45px;
+
+    padding: 18px;
+
+    text-align: center;
+
+    border-top:
+        1px solid rgba(255, 255, 255, 0.2);
+
+    color: #dce6ff;
+
+    font-size: 14px;
+
+    position: relative;
+
+    z-index: 2;
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px) {
+
+    .site-footer {
+
+        text-align: center;
+
+    }
+
+    .footer-heading::after {
+
+        left: 50%;
+
+        transform: translateX(-50%);
+
+    }
+
+    .footer-social {
+
+        display: flex;
+
+        justify-content: center;
+
+    }
+
+}
+
+/* WARNING MODAL */
+
+.warning-overlay {
+
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 99999;
+
+    padding: 20px;
+}
+
+.warning-box {
+
+    background: #fff;
+
+    width: 100%;
+    max-width: 420px;
+
+    border-radius: 18px;
+
+    padding: 30px 25px;
+
+    text-align: center;
+
+    animation: popupAnim 0.3s ease;
+
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+.warning-icon {
+
+    font-size: 55px;
+
+    color: #ff9800;
+
+    margin-bottom: 15px;
+}
+
+.warning-box h4 {
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.warning-box p {
+
+    color: #555;
+
+    line-height: 1.6;
+}
+
+.warning-buttons {
+
+    margin-top: 20px;
+
+    display: flex;
+
+    gap: 10px;
+
+    justify-content: center;
+}
+
+@keyframes popupAnim {
+
+    from {
+
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.marquee-wrapper {
+    width: 100%;
+    overflow: hidden;
+    background:white;
+    padding: 10px 0;
+    white-space: nowrap;
+    position: relative;
+}
+
+.marquee-content {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    white-space: nowrap;
+
+    will-change: transform;
+
+    transform: translate3d(0, 0, 0);
+
+    backface-visibility: hidden;
+
+    animation: marqueeMove 15s linear infinite;
+
+    padding-left: 100%;
+}
+
+
+
+.marquee-content a {
+    color: blue;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-left: 8px;
+    pointer-events: auto;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+@keyframes marqueeMove {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+@media (max-width: 768px) {
+
+    .marquee-content:hover {
+        animation-play-state: running;
+    }
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+    .marquee-content:hover {
+
+        animation-play-state: paused;
+
+    }
+
+}
+
+/* ================= GLOBAL LOADER ================= */
+
+#globalLoader {
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(255,255,255,0.9);
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999999;
+
+    transition: opacity 0.4s ease;
+
+    /* 🔥 FIX: without this, the loader silently swallows clicks on
+       whatever is underneath it (e.g. footer links) every time it
+       fades in/out — which happens on EVERY fetch() call site-wide,
+       since js/loader.js wraps window.fetch globally. The loader is
+       purely visual; it should never block interaction with the page. */
+    pointer-events: none;
+
+}
+
+/* SPINNER */
+
+.loader-spinner {
+
+    width: 65px;
+    height: 65px;
+
+    border: 6px solid #dbeafe;
+
+    border-top: 6px solid #0d6efd;
+
+    border-radius: 50%;
+
+    animation:
+        spinLoader 0.8s linear infinite;
+}
+
+/* ANIMATION */
+
+@keyframes spinLoader {
+
+    0% {
+
+        transform: rotate(0deg);
+
+    }
+
+    100% {
+
+        transform: rotate(360deg);
+
+    }
+}

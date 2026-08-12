@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Contact Us - GetInTouch24
+    </title>
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <link rel="stylesheet" href="css/contact.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+     <link rel="stylesheet" href="css/base.css"> 
+
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <nav class="contact-navbar">
+
+        <div class="container">
+
+            <!-- TOP LOGO BAR -->
+
+            <div class="logos-box">
+
+                <img src="images/logo.png" alt="GT24 Logo" class="sites-logo">
+
+            </div>
+
+            <a href="index.html" class="home-btn">
+
+                <i class="fa-solid fa-house"></i>
+
+                Home
+
+            </a>
+
+        </div>
+
+    </nav>
+
+    <!-- HERO SECTION -->
+
+    <section class="contact-hero">
+
+        <div class="container">
+
+            <h1>
+                Contact Us
+            </h1>
+
+            <p>
+                Have questions, suggestions, or facing any issue?
+                Feel free to contact us anytime.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- CONTACT SECTION -->
+
+    <section class="contact-section">
+
+        <div class="container">
+
+            <div class="contact-wrapper">
+
+                <!-- LEFT SIDE -->
+
+                <div class="contact-info">
+
+                    <h2>
+                        Let's Talk
+                    </h2>
+
+                    <p>
+                        We are always ready to help students
+                        regarding quizzes, notes, exams,
+                        account issues, and other queries.
+                    </p>
+
+                    <div class="info-box">
+
+                        <i class="fa-solid fa-envelope"></i>
+
+                        <span>
+                            getintouch24official@gmail.com
+                        </span>
+
+                    </div>
+
+                    <div class="info-box">
+
+                        <i class="fa-solid fa-clock"></i>
+
+                        <span>
+                            Available 24 x 7
+                        </span>
+                    </div>
+
+                    <div class="info-box">
+
+                        <i class="fa-solid fa-graduation-cap"></i>
+
+                        <span>
+                            Educational Support Platform
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- RIGHT SIDE -->
+
+                <div class="contact-form-box">
+
+                    <form id="contactForm">
+
+                        <h3>
+                            Send Message
+                        </h3>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Subject
+                            </label>
+
+                            <input type="text" class="form-control" id="subject" placeholder="Enter subject">
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            <label class="form-label">
+                                Message
+                            </label>
+
+                            <textarea class="form-control" id="message" rows="6"
+                                placeholder="Write your message here..."></textarea>
+
+                        </div>
+
+                        <button type="submit" class="send-btn">
+
+                            <i class="fa-solid fa-paper-plane"></i>
+
+                            Send Message
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= PREVIEW MODAL ================= -->
+    <div class="modal fade" id="feedbackPreviewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content preview-modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title">Preview Your Message</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <p class="preview-label">Subject</p>
+                    <p class="preview-value" id="previewSubject"></p>
+
+                    <p class="preview-label mt-3">Message</p>
+                    <p class="preview-value preview-message-text" id="previewMessage"></p>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Edit
+                    </button>
+                    <button type="button" id="confirmSendBtn" class="btn btn-primary">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Confirm & Send
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= THANK YOU MODAL ================= -->
+    <div class="modal fade" id="thankYouModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content thank-you-modal-content text-center">
+
+                <div class="modal-body py-5 px-4">
+                    <div class="thank-you-icon">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <h4 class="mt-3 mb-2">Thank You!</h4>
+                    <p class="mb-4">Thank you for giving your feedback or suggestion.</p>
+                    <button type="button" class="btn btn-primary px-4" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="footer"></div>
+    <script src="js/config.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/contact.js"></script>
+
+</body>
+
+</html>
