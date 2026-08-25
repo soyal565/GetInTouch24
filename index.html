@@ -25,6 +25,9 @@
     <!-- Auth JS -->
     <script src="js/auth.js" defer></script>
     <script type="module" src="js/dynamic_content.js"></script>
+
+    <!-- Dynamic Home Page Features (admin controlled cards) -->
+    <script src="js/public-features.js" defer></script>
 </head>
 
 <body>
@@ -350,7 +353,15 @@
             </h3>
 
             <div class="facility-section">
-                <div class="row facility p-4">
+                <!--
+                    🔥 DYNAMIC: cards below are now rendered by
+                    js/public-features.js from GET /api/public/features/active.
+                    Admin fully controls title/description/thumbnail/order
+                    via feature.html (admin panel). The 3 cards below are
+                    a static fallback shown only until JS replaces them
+                    (or if the API call fails), so the page never looks empty.
+                -->
+                <div class="row facility p-4" id="featuresContainer">
 
                     <div class="col-12 col-lg-4">
                         <div class="card custom-card shadow">

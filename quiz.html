@@ -21,7 +21,7 @@
             border: none;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
         }
 
         .sidebar-stats {
@@ -87,15 +87,26 @@
             color: #fff;
         }
 
-        .palette-btn:hover { transform: scale(1.1); }
-        .palette-btn.current { background: #2563eb; color: #fff; box-shadow: 0 0 0 2px #93c5fd; }
-        .palette-btn.answered { background: #22c55e; color: #fff; }
+        .palette-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .palette-btn.current {
+            background: #2563eb;
+            color: #fff;
+            box-shadow: 0 0 0 2px #93c5fd;
+        }
+
+        .palette-btn.answered {
+            background: #22c55e;
+            color: #fff;
+        }
 
         /* ===== QUESTION CARD ===== */
         .question-card {
             border: none;
             border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.13);
         }
 
         .question-card .card-body {
@@ -243,10 +254,10 @@
             <p>
                 Click below to start quiz in fullscreen mode.<br>
                 If you try to exit from fullscreen then quiz will be auto-submitted.<br>
-                <h5>So, Be Careful !!!</h5><br><br>
-                क्विज़ को फुलस्क्रीन मोड में शुरू करने के लिए नीचे क्लिक करें।<br>
-                फुलस्क्रीन मोड से बाहर निकलने पर क्विज़ स्वतः सबमिट हो जाएगा।<br>
-                <h5>इसलिए, सावधान रहें!</h5>
+            <h5>So, Be Careful !!!</h5><br><br>
+            क्विज़ को फुलस्क्रीन मोड में शुरू करने के लिए नीचे क्लिक करें।<br>
+            फुलस्क्रीन मोड से बाहर निकलने पर क्विज़ स्वतः सबमिट हो जाएगा।<br>
+            <h5>इसलिए, सावधान रहें!</h5>
             </p>
             <button id="startQuizBtn" class="btn btn-primary">Start Quiz</button>
             <button class="btn btn-warning ms-2" onclick="goBackFromQuiz()">Go To Back</button>
@@ -268,9 +279,17 @@
                 <h4 id="quizTitleText" class="mb-1"></h4>
                 <p id="quizDescriptionText" class="mb-0"></p>
             </div>
-            <button class="btn btn-primary" id="topHomeBtn" style="display:none;" onclick="window.location.href='index.html'">
-                🏠 Home
-            </button>
+            <div class="d-flex align-items-center gap-2">
+                <div class="zoom-controls">
+                    <button class="btn btn-outline-secondary btn-sm" id="zoomOutBtn" title="Zoom Out">A−</button>
+                    <button class="btn btn-outline-secondary btn-sm" id="zoomResetBtn" title="Reset Zoom">100%</button>
+                    <button class="btn btn-outline-secondary btn-sm" id="zoomInBtn" title="Zoom In">A+</button>
+                </div>
+                <button class="btn btn-primary" id="topHomeBtn" style="display:none;"
+                    onclick="window.location.href='index.html'">
+                    🏠 Home
+                </button>
+            </div>
         </div>
     </div>
 
@@ -316,7 +335,8 @@
 
                         <div id="optionsContainer"></div>
 
-                        <div id="reviewExplanation" class="mt-3 p-2 bg-light border rounded" style="display:none;"></div>
+                        <div id="reviewExplanation" class="mt-3 p-2 bg-light border rounded" style="display:none;">
+                        </div>
                         <div class="alert alert-info mt-3 d-none" id="explanationBox"></div>
 
                         <!-- NAVIGATION -->
@@ -329,8 +349,10 @@
                         <!-- SUBMIT / BACK -->
                         <div class="quiz-action-bar">
                             <button class="btn btn-success" id="submitBtn">Submit Quiz</button>
-                            <button class="btn btn-success" id="backToResultBtn" style="display:none;">Back to Result</button>
-                            <button class="btn btn-success" id="homebtn" onclick="window.location.href='index.html'" style="display:none;">Go to Home</button>
+                            <button class="btn btn-success" id="backToResultBtn" style="display:none;">Back to
+                                Result</button>
+                            <button class="btn btn-success" id="homebtn" onclick="window.location.href='index.html'"
+                                style="display:none;">Go to Home</button>
                         </div>
 
                     </div>
@@ -349,8 +371,10 @@
                 <p id="resultStatus"></p>
                 <div class="row mt-3">
                     <div class="col"><span class="stat-label label-total">Total</span>: <b id="resultTotal"></b></div>
-                    <div class="col"><span class="stat-label label-attempted">Attempted</span>: <b id="resultAttempted"></b></div>
-                    <div class="col"><span class="stat-label label-correct">Correct</span>: <b id="resultCorrect"></b></div>
+                    <div class="col"><span class="stat-label label-attempted">Attempted</span>: <b
+                            id="resultAttempted"></b></div>
+                    <div class="col"><span class="stat-label label-correct">Correct</span>: <b id="resultCorrect"></b>
+                    </div>
                     <div class="col"><span class="stat-label label-wrong">Wrong</span>: <b id="resultWrong"></b></div>
                 </div>
                 <hr class="my-4">
@@ -362,4 +386,5 @@
     </div>
 
 </body>
+
 </html>

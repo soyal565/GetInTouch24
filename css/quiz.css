@@ -153,3 +153,41 @@
     font-size: 0.95rem;
     font-weight: 600;
 }
+
+:root { --quiz-zoom: 1; }
+
+/* ===== ZOOM CONTROLS ===== */
+.zoom-controls {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.zoom-controls .btn {
+    font-weight: 700;
+    min-width: 38px;
+    padding: 4px 10px;
+}
+
+#zoomResetBtn {
+    min-width: 54px;
+    font-size: 0.8rem;
+}
+
+/* Zoom-affected elements */
+#questionText {
+    font-size: calc(1.15rem * var(--quiz-zoom)) !important;
+}
+
+.option-content {
+    font-size: calc(1rem * var(--quiz-zoom));
+}
+
+#questionCount {
+    font-size: calc(0.85rem * var(--quiz-zoom));
+}
+
+#reviewExplanation,
+#explanationBox {
+    font-size: calc(0.95rem * var(--quiz-zoom));
+}

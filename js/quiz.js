@@ -18,6 +18,7 @@ async function initHistoryResultView(attemptId) {
 
     if (timerEl) timerEl.style.display = "none";
     if (submitBtn) submitBtn.style.display = "none";
+    wireZoomControls();
 
     function escapeHTML(str) {
         if (!str) return "";
@@ -304,6 +305,44 @@ if (quizResponse && quizResponse.data) quizResponse = quizResponse.data;
 let allowBackNavigation = false;
 let allowFullscreenExit = false;
 
+/* ===================== ZOOM CONTROLS ===================== */
+let quizZoomLevel = parseFloat(sessionStorage.getItem("quizZoomLevel")) || 1;
+const ZOOM_MIN = 0.7, ZOOM_MAX = 1.6, ZOOM_STEP = 0.1;
+
+function applyZoom() {
+    document.documentElement.style.setProperty("--quiz-zoom", quizZoomLevel);
+    const resetBtn = document.getElementById("zoomResetBtn");
+    if (resetBtn) resetBtn.innerText = Math.round(quizZoomLevel * 100) + "%";
+    sessionStorage.setItem("quizZoomLevel", quizZoomLevel);
+}
+
+function wireZoomControls() {
+    const zoomInBtn = document.getElementById("zoomInBtn");
+    const zoomOutBtn = document.getElementById("zoomOutBtn");
+    const zoomResetBtn = document.getElementById("zoomResetBtn");
+
+    if (zoomInBtn) {
+        zoomInBtn.onclick = () => {
+            quizZoomLevel = Math.min(ZOOM_MAX, +(quizZoomLevel + ZOOM_STEP).toFixed(2));
+            applyZoom();
+        };
+    }
+    if (zoomOutBtn) {
+        zoomOutBtn.onclick = () => {
+            quizZoomLevel = Math.max(ZOOM_MIN, +(quizZoomLevel - ZOOM_STEP).toFixed(2));
+            applyZoom();
+        };
+    }
+    if (zoomResetBtn) {
+        zoomResetBtn.onclick = () => {
+            quizZoomLevel = 1;
+            applyZoom();
+        };
+    }
+
+    applyZoom();
+}
+
 function shuffleArray(arr) {
     const shuffled = [...arr];
     for (let i = shuffled.length - 1; i > 0; i--) {
@@ -337,8 +376,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const questions = shuffleArray(quizResponse.questions || []);
     const QUIZ_TYPE = quizResponse.type;
-    const attemptId = Number(sessionStorage.getItem("attemptId"));   
-const resultCacheKey = `quizResult_${attemptId}`; 
+    const attemptId = Number(sessionStorage.getItem("attemptId"));
+    const resultCacheKey = `quizResult_${attemptId}`;
 
     /* ===================== DOM ===================== */
     const submitBtn = document.getElementById("submitBtn");
@@ -639,7 +678,7 @@ const resultCacheKey = `quizResult_${attemptId}`;
 
         saveAnswer();
 
-        
+
         const answers = [];
 
         questions.forEach(q => {
@@ -664,7 +703,7 @@ const resultCacheKey = `quizResult_${attemptId}`;
 
             if (res.ok) {
                 finalResult = data;
-                sessionStorage.setItem(resultCacheKey, JSON.stringify(data)); 
+                sessionStorage.setItem(resultCacheKey, JSON.stringify(data));
                 if (data.results && questions.length) {
                     data.results.forEach((resItem) => {
                         const matchedQ = questions.find(q => q.id === resItem.questionId);
@@ -678,9 +717,19 @@ const resultCacheKey = `quizResult_${attemptId}`;
                 document.getElementById("quizSection").classList.add("d-none");
                 document.getElementById("resultSection").classList.remove("d-none");
                 if (topHomeBtn) topHomeBtn.style.display = "inline-block";
-                showResult(finalResult);
-                exitFullscreen();
 
+            
+                if (quizResponse.showResult === false) {
+                    document.getElementById("resultSection").innerHTML =
+                        `<div class="text-center p-5">
+                <h4>Quiz Submitted Successfully ✅</h4>
+                <p class="text-muted">Result will be declared later by the admin.</p>
+            </div>`;
+                } else {
+                    showResult(finalResult);
+                }
+
+                exitFullscreen();
             } else {
                 alert(data.message || "Submit failed ❌");
             }
@@ -811,23 +860,34 @@ const resultCacheKey = `quizResult_${attemptId}`;
     ${question.explanation
                     ? `<div class="mt-2 p-2 bg-light border rounded"><b>Explanation:</b> ${escapeHTML(question.explanation)}</div>`
                     : ""}
-</div>`;
+ </div>`;
         });
     }
 
     /* ===================== RESTORE CACHED RESULT (if already submitted) ===================== */
     const cachedResult = sessionStorage.getItem(resultCacheKey);
     if (cachedResult) {
-        try {
-            finalResult = JSON.parse(cachedResult);
-            quizSubmitted = true;
-            document.getElementById("startOverlay").style.display = "none";
-            document.getElementById("quizSection").classList.add("d-none");
-            document.getElementById("resultSection").classList.remove("d-none");
-            if (topHomeBtn) topHomeBtn.style.display = "inline-block";
+    try {
+        finalResult = JSON.parse(cachedResult);
+        quizSubmitted = true;
+        document.getElementById("startOverlay").style.display = "none";
+        document.getElementById("quizSection").classList.add("d-none");
+        document.getElementById("resultSection").classList.remove("d-none");
+        if (topHomeBtn) topHomeBtn.style.display = "inline-block";
+
+        // ✅ ADD THIS CHECK
+        if (quizResponse.showResult === false) {
+            document.getElementById("resultSection").innerHTML =
+                `<div class="text-center p-5">
+                    <h4>Quiz Submitted Successfully ✅</h4>
+                    <p class="text-muted">Result will be declared later by the admin.</p>
+                </div>`;
+        } else {
             showResult(finalResult);
-            exitFullscreen();
-        } catch (e) {
+        }
+
+        exitFullscreen();
+    } catch (e) {
             console.error("Failed to restore cached result:", e);
             sessionStorage.removeItem(resultCacheKey);
         }
@@ -835,7 +895,7 @@ const resultCacheKey = `quizResult_${attemptId}`;
 
     /* ===================== INIT ===================== */
     loadQuizInfo();
-
+    wireZoomControls();
     document.getElementById("startQuizBtn").onclick = async function () {
         await enterFullscreen();
         document.getElementById("startOverlay").style.display = "none";
