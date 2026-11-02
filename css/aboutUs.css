@@ -1,0 +1,517 @@
+/* =====================================================
+   ABOUT US PAGE  (GetInTouch24)
+   Palette matches the main site:
+   blue #0d6efd, deep navy #001f54, sky #2fb3ff, gold #ffd166
+   ===================================================== */
+
+:root {
+    --ab-blue: #0d6efd;
+    --ab-navy: #001f54;
+    --ab-royal: #0d3b9c;
+    --ab-sky: #2fb3ff;
+    --ab-gold: #ffd166;
+    --ab-ink: #1c2540;
+    --ab-muted: #5a6585;
+    --ab-soft: #f4f8ff;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--ab-ink);
+    background: #fff;
+}
+
+/* Keyboard focus */
+.ab-contact-card:focus-visible,
+.ab-form-btn:focus-visible {
+    outline: 3px solid var(--ab-gold);
+    outline-offset: 3px;
+}
+
+/* ---------- Shared headings ---------- */
+
+.ab-title {
+    font-weight: 800;
+    font-size: 34px;
+    color: var(--ab-navy);
+    margin: 0;
+}
+
+.ab-line {
+    width: 70px;
+    height: 4px;
+    border-radius: 20px;
+    margin: 12px 0 22px;
+    background: linear-gradient(90deg, var(--ab-blue), var(--ab-gold));
+}
+
+.ab-line-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.ab-head-center {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 44px;
+}
+
+.ab-head-sub {
+    color: var(--ab-muted);
+    margin: 0;
+}
+
+
+/* =====================================================
+   1. FOUNDER  (the main attraction of the page)
+   ===================================================== */
+
+.ab-founder {
+    position: relative;
+    padding: 80px 0 90px;
+    color: #fff;
+    background:
+        radial-gradient(circle at 12% 18%, rgba(47, 179, 255, 0.35), transparent 42%),
+        linear-gradient(135deg, #0d6efd 0%, #0d3b9c 55%, #001f54 100%);
+    overflow: hidden;
+}
+
+/* big soft ring in the corner */
+.ab-founder::after {
+    content: "";
+    position: absolute;
+    right: -140px;
+    bottom: -160px;
+    width: 420px;
+    height: 420px;
+    border-radius: 50%;
+    border: 60px solid rgba(255, 255, 255, 0.06);
+}
+
+.ab-founder .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* ----- photo ----- */
+
+.ab-photo-wrap {
+    position: relative;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* offset gold frame behind the photo */
+.ab-photo-wrap::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: -18px;
+    right: 18px;
+    bottom: -18px;
+    border-radius: 140px 140px 28px 28px;
+    border: 3px solid var(--ab-gold);
+    z-index: 0;
+}
+
+.ab-photo-frame {
+    position: relative;
+    z-index: 1;
+    border-radius: 140px 140px 28px 28px;
+    overflow: hidden;
+    border: 6px solid #fff;
+    background: #fff;
+    box-shadow: 0 22px 50px rgba(0, 10, 40, 0.45);
+}
+
+.ab-photo {
+    display: block;
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    object-position: center top;
+}
+
+.ab-photo-badge {
+    position: absolute;
+    z-index: 2;
+    right: -12px;
+    bottom: 34px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: var(--ab-royal);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 30px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.25);
+}
+
+.ab-photo-badge i {
+    color: #ffb703;
+}
+
+/* ----- text ----- */
+
+.ab-role {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--ab-gold);
+    color: var(--ab-navy);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 8px 18px;
+    border-radius: 30px;
+    margin-bottom: 18px;
+}
+
+.ab-name {
+    font-weight: 800;
+    font-size: clamp(32px, 5vw, 52px);
+    line-height: 1.15;
+    margin: 0 0 8px;
+    color: #fff;
+}
+
+.ab-sub {
+    font-size: 17px;
+    color: #cfe0ff;
+    margin-bottom: 22px;
+}
+
+.ab-intro {
+    font-size: 17px;
+    line-height: 1.85;
+    max-width: 62ch;
+    color: #eef4ff;
+    padding-left: 18px;
+    border-left: 4px solid var(--ab-gold);
+    margin-bottom: 28px;
+}
+
+.ab-chips-title {
+    font-weight: 600;
+    color: #cfe0ff;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.ab-chips {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.ab-chips li {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 30px;
+}
+
+
+/* =====================================================
+   2. ABOUT PLATFORM
+   ===================================================== */
+
+.ab-platform {
+    padding: 80px 0;
+    background: #fff;
+}
+
+.ab-lead {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: var(--ab-royal);
+    max-width: 58ch;
+    margin-bottom: 16px;
+}
+
+.ab-body {
+    font-size: 16px;
+    line-height: 1.9;
+    color: var(--ab-muted);
+    max-width: 62ch;
+    margin: 0;
+}
+
+/* courses panel */
+.ab-courses {
+    background: var(--ab-soft);
+    border-radius: 24px;
+    padding: 28px;
+    border-top: 5px solid var(--ab-blue);
+}
+
+.ab-courses-title {
+    font-weight: 700;
+    color: var(--ab-navy);
+    margin-bottom: 16px;
+}
+
+.ab-course {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #fff;
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ab-navy);
+}
+
+.ab-course:last-child {
+    margin-bottom: 0;
+}
+
+.ab-course i {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ab-blue);
+    color: #fff;
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   3. FACILITIES
+   ===================================================== */
+
+.ab-facilities {
+    padding: 80px 0;
+    background: var(--ab-soft);
+}
+
+.ab-fac {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    height: 100%;
+    padding: 6px 4px;
+}
+
+.ab-fac-icon {
+    flex-shrink: 0;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--ab-blue), var(--ab-royal));
+    box-shadow: 0 6px 16px rgba(13, 110, 253, 0.3);
+}
+
+.ab-fac h5 {
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--ab-navy);
+    margin: 2px 0 6px;
+}
+
+.ab-fac p {
+    margin: 0;
+    color: var(--ab-muted);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   4. GOAL / PRAISE BAND
+   ===================================================== */
+
+.ab-goal {
+    padding: 80px 0;
+    text-align: center;
+    color: #fff;
+    background:
+        radial-gradient(circle at 85% 20%, rgba(47, 179, 255, 0.3), transparent 45%),
+        linear-gradient(135deg, #001f54, #0d3b9c);
+}
+
+.ab-goal-icon {
+    font-size: 40px;
+    color: var(--ab-gold);
+    margin-bottom: 18px;
+}
+
+.ab-goal-text {
+    font-weight: 800;
+    font-size: clamp(26px, 4vw, 42px);
+    line-height: 1.35;
+    max-width: 22em;
+    margin: 0 auto 20px;
+}
+
+.ab-goal-sub {
+    max-width: 60ch;
+    margin: 0 auto;
+    color: #cfe0ff;
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+/* =====================================================
+   5. CONTACT
+   ===================================================== */
+
+.ab-contact {
+    padding: 80px 0 90px;
+    background: #fff;
+}
+
+.ab-contact-card {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    height: 100%;
+    padding: 22px 24px;
+    border-radius: 20px;
+    background: var(--ab-soft);
+    border: 2px solid transparent;
+    text-decoration: none;
+    color: var(--ab-ink);
+    transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.ab-contact-card:hover {
+    border-color: var(--ab-blue);
+    transform: translateY(-4px);
+    color: var(--ab-ink);
+}
+
+.ab-contact-icon {
+    flex-shrink: 0;
+    width: 58px;
+    height: 58px;
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26px;
+    color: #fff;
+}
+
+.ab-mail {
+    background: var(--ab-blue);
+}
+
+.ab-wa {
+    background: #25d366;
+}
+
+.ab-contact-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.ab-contact-info small {
+    color: var(--ab-muted);
+    font-size: 13px;
+}
+
+.ab-contact-info strong {
+    font-size: 17px;
+    color: var(--ab-navy);
+    overflow-wrap: anywhere;
+}
+
+.ab-form-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    border-radius: 12px;
+    background: var(--ab-blue);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.25s ease;
+}
+
+.ab-form-btn:hover {
+    background: var(--ab-royal);
+    color: #fff;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 991px) {
+
+    .ab-founder {
+        padding: 55px 0 65px;
+    }
+
+    .ab-photo-wrap {
+        max-width: 320px;
+    }
+
+    .ab-photo {
+        height: 400px;
+    }
+
+    .ab-founder-text {
+        text-align: center;
+    }
+
+    .ab-intro {
+        text-align: left;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .ab-chips {
+        justify-content: center;
+    }
+
+    .ab-platform,
+    .ab-facilities,
+    .ab-goal,
+    .ab-contact {
+        padding: 56px 0;
+    }
+
+    .ab-title {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 576px) {
+
+    .ab-photo-badge {
+        right: 0;
+        font-size: 13px;
+    }
+
+    .ab-contact-card {
+        padding: 18px;
+    }
+
+    .ab-contact-info strong {
+        font-size: 15px;
+    }
+}

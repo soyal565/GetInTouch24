@@ -8,8 +8,8 @@ body {
 /* ===== NAVBAR HEIGHT FIX ===== */
 
 .navbar {
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
     min-height: 70px;
 }
 
@@ -26,40 +26,59 @@ body {
 
 /* ================= LOGO ================= */
 
+/* ================= LOGO ================= */
+
 .logo-box {
-
-    background: white;
-
-    border-radius: 999px;
-
-    padding: 4px 10px;
-
+    background: transparent;
+    padding: 0;
+    border-radius: 50%;
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
-
 }
 
 .site-logo {
-
-    height: 90px;
-
-    width: auto;
-
+    height: 76px;
+    width: 76px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    background: #fff;
     display: block;
+    transition: transform 0.3s ease;
+}
 
+.site-logo:hover {
+    transform: scale(1.06);
+}
 
+/* Mobile */
+@media (max-width: 576px) {
+    .site-logo {
+        height: 58px;
+        width: 58px;
+        border-width: 2px;
+    }
 }
 
 
-
+/* Navbar + mobile menu: same font on every page */
+.navbar,
+#mobileMenu {
+    font-family: 'Poppins', sans-serif;
+}
 /* Navbar Styling */
 .nav {
     padding-left: 0;
     font-size: larger;
     font-weight: bold;
+}
+/* Navbar links bold (desktop + mobile) */
+.navbar .nav .nav-link,
+.navbar .nav .nav-link.dropdown-toggle,
+#mobileMenu .nav .nav-link {
+    font-weight: 700 !important;
 }
 
 /* Desktop dropdown hover */
@@ -447,16 +466,13 @@ body {
 /* LOGO */
 
 .footer-logo {
-
-    width: 90px;
-
-    border-radius: 20px;
-
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
     margin-bottom: 18px;
-
-    box-shadow:
-        0 5px 20px rgba(0, 0, 0, 0.3);
-
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* TITLE */
@@ -897,5 +913,254 @@ body {
 
         transform: rotate(360deg);
 
+    }
+}
+
+/* ========================= */
+/* DIRECTOR MESSAGE SECTION  */
+/* base.css ke end mein paste karein */
+/* ========================= */
+
+.director-section {
+    position: relative;
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f4f8ff 0%, #ffffff 55%, #eaf1ff 100%);
+    overflow: hidden;
+}
+
+.director-section::before {
+    content: "";
+    position: absolute;
+    top: -120px;
+    left: -120px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: rgba(13, 110, 253, 0.08);
+}
+
+.director-section::after {
+    content: "";
+    position: absolute;
+    bottom: -140px;
+    right: -100px;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: rgba(13, 110, 253, 0.07);
+}
+
+.director-section .container {
+    position: relative;
+    z-index: 2;
+}
+
+/* ---------- PHOTO ---------- */
+
+.director-photo-wrap {
+    position: relative;
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+/* offset gradient border behind photo */
+.director-photo-wrap::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    left: -18px;
+    right: 18px;
+    bottom: -18px;
+    border-radius: 28px;
+    background: linear-gradient(135deg, #0d6efd, #001f54);
+    z-index: 0;
+}
+
+.director-photo-frame {
+    position: relative;
+    z-index: 1;
+    border-radius: 28px;
+    overflow: hidden;
+    border: 6px solid #fff;
+    box-shadow: 0 18px 45px rgba(0, 31, 84, 0.28);
+    background: #fff;
+}
+
+.director-photo {
+    display: block;
+    width: 100%;
+    height: 540px;
+    object-fit: cover;
+    object-position: center 25%;
+    transition: transform 0.6s ease;
+}
+
+.director-photo-frame:hover .director-photo {
+    transform: scale(1.05);
+}
+
+.director-photo-badge {
+    position: absolute;
+    z-index: 2;
+    right: -10px;
+    bottom: 30px;
+    background: #fff;
+    color: #0d3b9c;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 10px 18px;
+    border-radius: 30px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.director-photo-badge i {
+    color: #ffb703;
+}
+
+/* ---------- CONTENT ---------- */
+
+.director-content {
+    background: #fff;
+    border-radius: 26px;
+    padding: 40px 42px;
+    box-shadow: 0 14px 40px rgba(13, 110, 253, 0.12);
+    border-top: 5px solid #0d6efd;
+}
+
+.director-tag {
+    display: inline-block;
+    background: rgba(13, 110, 253, 0.1);
+    color: #0d6efd;
+    font-weight: 600;
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 30px;
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+}
+
+.director-heading {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    color: #001f54;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.director-heading::after {
+    content: "";
+    display: block;
+    width: 60%;
+    height: 4px;
+    border-radius: 20px;
+    margin-top: 8px;
+    background: linear-gradient(90deg, #0d6efd, #ffd166);
+}
+
+/* big bold quotation right under heading */
+.director-quote {
+    margin: 22px 0 24px;
+    padding: 18px 22px;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.5;
+    color: #0d3b9c;
+    background: linear-gradient(90deg, rgba(13, 110, 253, 0.08), transparent);
+    border-left: 5px solid #0d6efd;
+    border-radius: 0 14px 14px 0;
+}
+
+.director-text p {
+    color: #444;
+    font-size: 16px;
+    line-height: 1.85;
+    text-align: justify;
+    margin-bottom: 14px;
+}
+
+.director-text .director-highlight {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #0d6efd;
+    font-style: italic;
+    padding: 6px 0;
+}
+
+/* ---------- SIGNATURE BOX ---------- */
+
+.director-sign-box {
+    margin-top: 26px;
+    padding-top: 22px;
+    border-top: 1px dashed #b9cdf5;
+    text-align: right;
+}
+
+.director-signature {
+    width: 230px;
+    max-width: 70%;
+    height: auto;
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.director-name {
+    font-weight: 800;
+    color: #001f54;
+    margin: 4px 0 6px;
+}
+
+.director-qual,
+.director-exp {
+    margin: 0 0 4px;
+    font-size: 14.5px;
+    color: #555;
+}
+
+.director-qual i,
+.director-exp i {
+    color: #0d6efd;
+    margin-right: 6px;
+}
+
+.director-exp {
+    font-weight: 600;
+    color: #0d3b9c;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media (max-width: 991px) {
+    .director-section {
+        padding: 55px 0;
+    }
+
+    .director-photo {
+        height: 440px;
+    }
+
+    .director-content {
+        padding: 28px 22px;
+    }
+
+    .director-heading {
+        font-size: 26px;
+    }
+
+    .director-quote {
+        font-size: 18px;
+    }
+
+    .director-sign-box {
+        text-align: center;
+    }
+
+    .director-photo-badge {
+        right: 10px;
     }
 }

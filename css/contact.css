@@ -24,7 +24,7 @@ body {
             #1a4fb5
         );
 
-    padding: 18px 0;
+    padding: 12px 0;
 
     box-shadow:
         0 4px 15px rgba(0,0,0,0.1);
@@ -264,31 +264,32 @@ body {
 }
 
 .logos-box {
-
-    background: white;
-
-    border-radius: 999px;
-
-    padding: 8px 15px;
-
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
-
-    margin-left: -10px;
-
 }
 
-.sites-logo {
-
-    height: 80px;
-
-    width: auto;
-
+.logos-box .site-logo {
+    width: 76px;
+    height: 76px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+    background: #fff;
     display: block;
+}
 
+@media (max-width: 576px) {
+    .logos-box .site-logo {
+        width: 58px;
+        height: 58px;
+        border-width: 2px;
+    }
 }
 
 /* ================= PREVIEW MODAL ================= */

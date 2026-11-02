@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Us - GetInTouch24</title>
+    <meta name="description"
+        content="GetInTouch24 is an online learning platform for NIELIT CCC, O Level and A Level. Meet our founder Rajendra Singh Kushwaha.">
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="css/base.css?v=4">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/aboutUs.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <!-- Common JS (same order as other pages) -->
+    <script src="js/config.js"></script>
+    <script src="js/loader.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/bootstrap.bundle.js"></script>
+    <!-- Let guests read this page without the login popup opening by itself -->
+    <script>window.SKIP_AUTO_LOGIN_POPUP = true;</script>
+    <script src="js/auth.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+    <div class="bg-primary text-white shadow-lg navbar navbar-dark sticky-top">
+        <div class="container-fluid d-flex align-items-center">
+
+            <!-- LOGO -->
+            <div class="col-6 col-lg-3">
+                <a class="navbar-brand logo-box" href="index.html">
+                    <img src="images/logo1.webp?v=2" alt="GT24 Logo" class="site-logo">
+                </a>
+            </div>
+
+            <!-- NAV + BUTTONS -->
+            <div class="col-6 col-lg-9 d-flex align-items-center justify-content-end">
+
+                <!-- DESKTOP NAV -->
+                <ul class="nav d-none d-lg-flex me-4">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="notes.html">Notes</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link text-white dropdown-toggle" href="#">Online Test</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="live-quiz.html">Live Quizzes</a></li>
+                            <li><a class="dropdown-item" href="practice-quiz.html">Practice Quizzes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="aboutUs.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+
+                <!-- DESKTOP AUTH AREA -->
+                <div class="d-none d-lg-flex align-items-center gap-2 me-3" id="authArea">
+
+                    <!-- BEFORE LOGIN -->
+                    <div id="guestButtons">
+                        <button class="btn btn-outline-light" onclick="openLogin()">Login</button>
+                        <button class="btn btn-success" onclick="openSignup()">Create Account</button>
+                    </div>
+
+                    <!-- AFTER LOGIN -->
+                    <div id="userMenu" class="dropdown d-none">
+                        <a class="text-white fs-5 dropdown-toggle" href="#" role="button">
+                            <i class="fa-solid fa-user-circle"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="profile.html">My Profile</a></li>
+                            <li><a class="dropdown-item text-danger" href="#" onclick="logoutUser()">Logout</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <!-- MOBILE BURGER -->
+                <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#mobileMenu">
+                    <i class="fa-solid fa-bars text-white fs-3"></i>
+                </button>
+
+            </div>
+        </div>
+    </div>
+    <!-- NAVBAR END -->
+
+    <!-- ================= LOGIN MODAL ================= -->
+    <div id="loginModal" class="custom-modal">
+        <form method="post" id="loginForm">
+
+            <div class="head-form-1">
+                <h4>Login</h4>
+                <button type="button" class="btn-close" onclick="closeLoginModal()"></button>
+            </div>
+
+            <hr class="divider">
+
+            <div class="field">
+
+                <div class="input-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" id="loginEmail" placeholder="Email Address" name="email">
+                    <small class="error-msg" id="LoginEmailError"></small>
+                </div>
+
+                <div class="input-icon">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="loginPassword" placeholder="Password" name="password">
+                    <i class="fa-solid fa-eye toggle-password-icon" data-target="loginPassword"></i>
+                    <small class="error-msg" id="passwordError"></small>
+                </div>
+
+                <div class="text-end mb-2">
+                    <a href="#" onclick="openForgotPassword()" class="text-decoration-none">
+                        Forgot Password?
+                    </a>
+                </div>
+
+                <button type="submit" class="submit">
+                    Login
+                </button>
+
+                <div class="switch-auth-text">
+                    <span>Don't have an account?</span>
+                    <a href="#" onclick="switchToSignup()">Register First</a>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <!-- LOGIN MODAL END -->
+
+
+    <!-- ================= SIGNUP MODAL ================= -->
+    <div id="signupModal" class="custom-modal">
+        <form method="post" id="signupForm">
+
+            <div class="head-form-2">
+                <h4>Create Account</h4>
+                <button type="button" class="btn-close" onclick="closeModal('signupModal')"></button>
+            </div>
+
+            <hr class="divider">
+
+            <div class="field">
+
+                <div class="input-icon">
+                    <i class="fa-solid fa-user"></i>
+                    <input type="text" inputmode="text" id="name" placeholder="Name" name="name">
+                    <small class="error-msg" id="nameError"></small>
+                </div>
+
+                <div class="input-icon">
+                    <i class="fa-solid fa-phone"></i>
+                    <input type="tel" id="mobile" placeholder="Mobile" name="mobile">
+                    <small class="error-msg" id="mobileError"></small>
+                </div>
+
+                <div class="input-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input type="email" inputmode="email" id="signupEmail" placeholder="Email" name="email"
+                        title="Enter correct email because OTP will be send to this email for verification purpose">
+                    <small class="error-msg" id="SignUpEmailError"></small>
+                </div>
+
+                <div class="input-icon">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="signupPassword1" placeholder="Password" name="password"
+                        title="you can create password of any pattern like only numbers or combination of numbers and alphabets and special symbol or only alphabets">
+                    <i class="fa-solid fa-eye toggle-password-icon" data-target="signupPassword1"></i>
+                    <small class="error-msg" id="passwordError1"></small>
+                </div>
+
+                <div class="input-icon">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="signupPassword2" placeholder="Confirm Password" name="password">
+                    <i class="fa-solid fa-eye toggle-password-icon" data-target="signupPassword2"></i>
+                    <small class="error-msg" id="passwordError2"></small>
+                </div>
+
+                <button type="submit" class="submit">
+                    Register
+                </button>
+
+            </div>
+            <div class="mt-2">
+                <b><i>Note:</i></b>
+                <p><i>If you face any issue during register like verification email or other things then please
+                        wait 30 second to 1 min and then try to register and verify email.</i></p>
+            </div>
+
+        </form>
+    </div>
+    <!-- SIGNUP MODAL END -->
+
+
+    <!-- ================= OTP MODAL ================= -->
+    <div id="otpModal" class="custom-modal">
+        <form id="otpForm">
+
+            <div class="head-form-2">
+                <h4>Email Verification</h4>
+                <button type="button" class="btn-close" onclick="closeAll()"></button>
+            </div>
+
+            <hr class="divider">
+
+            <div class="field">
+
+                <div class="input-icon">
+                    <i class="fa-solid fa-key"></i>
+                    <input type="text" id="otp" placeholder="Enter OTP" maxlength="6">
+                    <small class="error-msg" id="otpError"></small>
+                </div>
+
+                <button type="submit" class="submit">
+                    Verify OTP
+                </button>
+
+            </div>
+
+        </form>
+    </div>
+    <!-- OTP MODAL END -->
+
+
+
+    <main>
+
+        <!-- ================= FOUNDER ================= -->
+        <section class="ab-founder">
+            <div class="container">
+                <div class="row align-items-center g-5">
+
+                    <!-- PHOTO -->
+                    <div class="col-12 col-lg-5">
+                        <div class="ab-photo-wrap">
+                            <div class="ab-photo-frame">
+                                <img src="images/director-about.jpg" alt="Rajendra Singh Kushwaha, Founder of GetInTouch24"
+                                    class="ab-photo">
+                            </div>
+                            <div class="ab-photo-badge">
+                                <i class="fa-solid fa-award"></i>
+                                13+ Years of Teaching
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TEXT -->
+                    <div class="col-12 col-lg-7">
+                        <div class="ab-founder-text">
+
+                            <span class="ab-role">
+                                <i class="fa-solid fa-star"></i>
+                                Founder of GetInTouch24
+                            </span>
+
+                            <h1 class="ab-name">Rajendra Singh Kushwaha</h1>
+
+                            <p class="ab-sub">Educator and professional trainer in Computer Science, IT and Commerce
+                            </p>
+
+                            <p class="ab-intro">
+                                Welcome! With over 13 years of teaching and mentoring experience, my mission has always
+                                been to simplify complex technical and business concepts, build job-ready practical
+                                skills, and help learners reach their professional goals in today's digital era.
+                            </p>
+
+                            <p class="ab-chips-title">Qualifications</p>
+                            <ul class="ab-chips">
+                                <li>M.Com</li>
+                                <li>B.T.C</li>
+                                <li>NIELIT 'A' Level</li>
+                                <li>NIELIT 'O' Level</li>
+                                <li>PGDCA</li>
+                                <li>COPA</li>
+                                <li>Tally</li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= ABOUT PLATFORM ================= -->
+        <section class="ab-platform">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+
+                    <div class="col-12 col-lg-7">
+                        <h2 class="ab-title">What is GetInTouch24?</h2>
+                        <div class="ab-line"></div>
+
+                        <p class="ab-lead">
+                            GetInTouch24 is an online learning platform where students can learn, practice and improve
+                            their knowledge with ease.
+                        </p>
+                        <p class="ab-body">
+                            We bring study notes, chapter-wise learning material and interactive quizzes together in
+                            one place. Explore a topic, test your understanding, and practice questions until you feel
+                            ready, whether you are just starting out or preparing for an exam.
+                        </p>
+                    </div>
+
+                    <div class="col-12 col-lg-5">
+                        <div class="ab-courses">
+                            <p class="ab-courses-title">NIELIT courses we cover</p>
+                            <div class="ab-course"><i class="fa-solid fa-laptop-code"></i><span>CCC</span></div>
+                            <div class="ab-course"><i class="fa-solid fa-microchip"></i><span>O Level</span></div>
+                            <div class="ab-course"><i class="fa-solid fa-graduation-cap"></i><span>A Level</span>
+                            </div>
+                            <div class="ab-course"><i class="fa-solid fa-layer-group"></i><span>Many other courses</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= FACILITIES ================= -->
+        <section class="ab-facilities">
+            <div class="container">
+
+                <div class="ab-head-center">
+                    <h2 class="ab-title">What you get with us</h2>
+                    <div class="ab-line ab-line-center"></div>
+                    <p class="ab-head-sub">Everything you need for learning and exam preparation, on one platform.</p>
+                </div>
+
+                <div class="row g-4">
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="ab-fac">
+                            <div class="ab-fac-icon"><i class="fa-solid fa-book-open"></i></div>
+                            <div>
+                                <h5>Study Materials</h5>
+                                <p>Useful notes and learning resources to support your studies.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="ab-fac">
+                            <div class="ab-fac-icon"><i class="fa-solid fa-circle-question"></i></div>
+                            <div>
+                                <h5>Online Quizzes</h5>
+                                <p>Test your knowledge and build understanding through regular practice.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="ab-fac">
+                            <div class="ab-fac-icon"><i class="fa-solid fa-list-check"></i></div>
+                            <div>
+                                <h5>Chapter-Wise Practice</h5>
+                                <p>Learn and practice every topic in an organized manner.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="ab-fac">
+                            <div class="ab-fac-icon"><i class="fa-solid fa-hand-pointer"></i></div>
+                            <div>
+                                <h5>Easy to Use</h5>
+                                <p>A simple, convenient and easy-to-navigate experience.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="ab-fac">
+                            <div class="ab-fac-icon"><i class="fa-solid fa-clock"></i></div>
+                            <div>
+                                <h5>Flexible Learning</h5>
+                                <p>Study and practice whenever and wherever you want.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <div class="ab-fac">
+                            <div class="ab-fac-icon"><i class="fa-solid fa-folder-open"></i></div>
+                            <div>
+                                <h5>Everything in One Place</h5>
+                                <p>Find relevant study materials and learning tools without searching around.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= PRAISE / GOAL ================= -->
+        <section class="ab-goal">
+            <div class="container">
+                <i class="fa-solid fa-quote-left ab-goal-icon"></i>
+                <h2 class="ab-goal-text">Make learning easier, practice smarter, and move forward with confidence.</h2>
+                <p class="ab-goal-sub">
+                    GetInTouch24 is more than an educational website. It is a learning companion built to make your
+                    exam preparation journey simpler and more effective.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ================= CONTACT ================= -->
+        <section class="ab-contact">
+            <div class="container">
+
+                <div class="ab-head-center">
+                    <h2 class="ab-title">Get in touch</h2>
+                    <div class="ab-line ab-line-center"></div>
+                    <p class="ab-head-sub">Questions about notes, quizzes or your account? Write to us or message us
+                        on WhatsApp.</p>
+                </div>
+
+                <div class="row g-4 justify-content-center">
+
+                    <div class="col-12 col-md-6 col-lg-5">
+                        <a class="ab-contact-card" href="https://mail.google.com/mail/?view=cm&fs=1&to=getintouch24official@gmail.com&su=GetInTouch24%20Query" target="_blank" rel="noopener">
+                            <span class="ab-contact-icon ab-mail"><i class="fa-solid fa-envelope"></i></span>
+                            <span class="ab-contact-info">
+                                <small>Email us</small>
+                                <strong>getintouch24official@gmail.com</strong>
+                            </span>
+                        </a>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-lg-5">
+                        <a class="ab-contact-card" href="https://wa.me/917860719997" target="_blank"
+                            rel="noopener">
+                            <span class="ab-contact-icon ab-wa"><i class="fa-brands fa-whatsapp"></i></span>
+                            <span class="ab-contact-info">
+                                <small>WhatsApp</small>
+                                <strong>+91 7860719997</strong>
+                            </span>
+                        </a>
+                    </div>
+
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="contact.html" class="ab-form-btn">
+                        <i class="fa-solid fa-paper-plane"></i>
+                        Or send us a message
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ================= OFFCANVAS MOBILE MENU ================= -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+
+        <div class="offcanvas-body">
+
+            <ul class="nav flex-column">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="notes.html">Notes</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Online Test</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="live-quiz.html">Live Quizzes</a></li>
+                        <li><a class="dropdown-item" href="practice-quiz.html">Practice Quizzes</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="aboutUs.html">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+            </ul>
+
+            <hr>
+
+            <!-- BEFORE LOGIN -->
+            <div id="mobileGuest">
+                <button class="btn btn-outline-primary w-100 mb-2" onclick="openLogin()">Login</button>
+                <button class="btn btn-success w-100" onclick="openSignup()">Create Account</button>
+            </div>
+
+            <!-- AFTER LOGIN -->
+            <div id="mobileUserMenu" class="d-none">
+                <a href="profile.html" class="btn btn-outline-dark w-100 mb-2">
+                    <i class="fa-solid fa-user"></i> My Profile
+                </a>
+                <button class="btn btn-danger w-100" onclick="logoutUser()">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <!-- OFFCANVAS END -->
+
+    <!-- FOOTER (loaded by common.js) -->
+    <div id="footer"></div>
+
+
+</body>
+
+</html>
